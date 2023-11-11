@@ -1,0 +1,67 @@
+version: '3.4'
+
+services:
+  posts:
+    image: posts
+    build:
+      context: posts
+      dockerfile: ./Dockerfile
+    container_name: posts-container
+    ports:
+      - 4000:4000
+    networks:
+      - tp_blog_network
+  comments:
+    image: comments
+    build:
+      context: comments
+      dockerfile: ./Dockerfile
+    container_name: comments_container
+    ports:
+      - 4001:4001
+    networks:
+      - tp_blog_network
+  query:
+    image: query
+    build:
+      context: query
+      dockerfile: ./Dockerfile
+    container_name: query_container
+    ports:
+      - 4002:4002
+    networks:
+      - tp_blog_network
+  moderation:
+    image: moderation
+    build:
+      context: moderation
+      dockerfile: ./Dockerfile
+    container_name: moderation_container
+    ports:
+      - 4003:4003
+    networks:
+      - tp_blog_network
+  event_bus:
+    image: event_bus
+    build:
+      context: event_bus
+      dockerfile: ./Dockerfile
+    container_name: event_bus_container
+    ports:
+      - 4005:4005
+    networks:
+      - tp_blog_network
+  client:
+    image: client
+    build:
+      context: client
+      dockerfile: ./Dockerfile
+    container_name: client_container
+    ports:
+      - 3000:3000
+    networks:
+      - tp_blog_network
+    stdin_open: true
+networks:
+  tp_blog_network:
+    driver: bridge 
