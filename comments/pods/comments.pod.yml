@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: comments
+  labels:
+    app: comments
+    rel: stable
+spec:
+  containers:
+    - name: comments
+      image: furelteguimene/comments:latest
+      ports:
+        - containerPort: 80
+      resources: {}

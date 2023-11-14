@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: event
+  labels:
+    app: event
+    rel: stable
+spec:
+  containers:
+    - name: event
+      image: furelteguimene/event:latest
+      ports:
+        - containerPort: 80
+      resources: {}

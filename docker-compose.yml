@@ -41,12 +41,12 @@ services:
       - 4003:4003
     networks:
       - tp_blog_network
-  event_bus:
-    image: event_bus
+  event:
+    image: event
     build:
-      context: event_bus
+      context: event
       dockerfile: ./Dockerfile
-    container_name: event_bus_container
+    container_name: event_container
     ports:
       - 4005:4005
     networks:
